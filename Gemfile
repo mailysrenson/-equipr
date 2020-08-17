@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.7'
 # Devise for the creation of user.
 gem 'devise'
 
+gem 'country_select'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
