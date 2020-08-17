@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_08_17_134155) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,4 +58,4 @@ ActiveRecord::Schema.define(version: 2020_08_17_134155) do
   end
 
   add_foreign_key "equipment", "users"
-
+end
