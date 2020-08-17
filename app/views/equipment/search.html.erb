@@ -1,9 +1,9 @@
 <ul>
   <% @search_result.each do |equipment| %>
     <!-- change this when you did couldinary in create -->
-    <!-- <% @article.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %> -->
+    <!-- <#% @article.photos.each do |photo| %>
+    <#%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <#% end %> -->
     <li><%= equipment.name %></li>
     <li><%= equipment.price %></li>
   <% end %>
