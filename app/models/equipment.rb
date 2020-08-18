@@ -6,4 +6,5 @@ class Equipment < ApplicationRecord
   validates :price, presence: true
   validates :price, numericality: true
   validates :name, presence: true
+
 end
