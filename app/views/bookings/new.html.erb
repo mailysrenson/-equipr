@@ -1,0 +1,9 @@
+<h1> Booking Form </h1>
+
+<div class="widget-content" data-unavailable="<%= @equipment.unavailable_dates.to_json %>">
+  <%= simple_form_for [@equipment, @booking] do |f| %>
+    <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
+    <%= f.input :end_date, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", wrapper_html: { class: "inline_field_wrapper" } %>
+    <%= f.submit "book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
+  <% end %>
+</div>
