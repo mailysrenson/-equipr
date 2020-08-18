@@ -1,11 +1,14 @@
-<%= form_for(@equipment) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :price %>
-  <%= f.number_field :price %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+
+  <h1 class="my-3">Add a new equipment</h1>
+  <%= simple_form_for(@equipment) do |f| %>
+    <%= f.input :name, placeholder: "For example: basketball" %>
+    <%= f.input :description, placeholder: "For example: size, for men/women, ... " %>
+    <%= f.input :price %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Add pictures (optional):"%>
+    <%= f.submit "Create", class: "btn btn-primary my-3"%>
+  <% end %>
+</div>
+
 
 <!-- add image upload -->
