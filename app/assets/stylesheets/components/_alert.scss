@@ -1,22 +1,20 @@
-.flash {
-  padding: 16px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
+.alert {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  border-radius: 4px;
-  margin: 8px;
+  background: white;
 }
 
-.flash-success {
+.alert-info {
   border: 2px solid #1EDD88;
 }
 
-.flash-warning {
+.alert-warning {
   border: 2px solid #FFC65A;
 }
 
-.flash-danger {
+.alert-danger {
   border: 2px solid #FD1015;
 }
