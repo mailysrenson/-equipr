@@ -5,12 +5,12 @@ const toggleDateInputs = function() {
   const endDateInput = document.getElementById('booking_end_date');
 
   if (startDateInput && endDateInput) {
-   // const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
+   const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
 
     flatpickr([startDateInput,endDateInput], {
     minDate: 'today',
     dateFormat: 'd-m-Y',
-    //disable: unvailableDates,
+    disable: unvailableDates,
     onChange: function(selectedDates, selectedDate) {
       if (selectedDate === '') {
         endDateInput.disabled = true;

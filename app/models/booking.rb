@@ -4,8 +4,8 @@ class Booking < ApplicationRecord
 
   STATUS =  ["pending", "cancelled", "approved", "rejected"]
 
-  validates :status, inclusion: {in: STATUS}, presence: true, default: "pending"
-  validates :start_date, :end_date, presence: true, availability: true
+  validates :status, inclusion: {in: Booking::STATUS}
+  validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
   validate :validate_dates
 
@@ -15,7 +15,7 @@ class Booking < ApplicationRecord
     date_ranges = bookings.map { |b| b.start_date..b.end_date }
 
     date_ranges.each do |range|
-      if range.include? value
+      if range.include? start_date
         self.errors.add(:start_date, "not available")
       end
     end

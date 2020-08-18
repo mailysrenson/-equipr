@@ -5,9 +5,9 @@ class BookingsController < ApplicationController
     @booking.equipment = @equipment
     @booking.user = current_user
     if @booking.save
-      redirect_to equipment_path
+      redirect_to equipment_path(@equipment)
     else
-      render 'equipment/show'
+      render :new
     end
   end
 
