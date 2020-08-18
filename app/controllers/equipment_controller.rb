@@ -1,7 +1,11 @@
 class EquipmentController < ApplicationController
   def search
-    @equipments = Equipment.all
-    @search_result = @equipments.where(name: params[:name])
+   @input = params[:search]
+    if @input.blank?  # blank? covers both nil and empty string
+      @equipments = Equipment.all
+    else
+      @equipments = Equipment.where("name like ?", "%#{@input}%")
+    end
   end
 
   def new
@@ -33,6 +37,6 @@ class EquipmentController < ApplicationController
   private
 
   def equipment_params
-    params.require(:equipment).permit(:name, :description, :price)
+    params.require(:equipment).permit(:name, :description, :price, photos: [])
   end
 end
