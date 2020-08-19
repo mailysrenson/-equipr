@@ -12,13 +12,13 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+          <%= link_to "Home", root_path, class: "nav-link", style: "color: #{ 'white' if current_page?(root_path)};"%>
         </li>
         <li class="nav-item">
-          <%= link_to "My equipments", own_equipment_path , class: "nav-link" %>
+          <%= link_to "My equipments", own_equipment_path , class: "nav-link" , style: "color: #{ 'white' if current_page?(root_path)};"%>
         </li>
         <li class="nav-item">
-          <%= link_to "My bookings", own_bookings_path, class: "nav-link" %>
+          <%= link_to "My bookings", own_bookings_path, class: "nav-link" , style: "color: #{ 'white' if current_page?(root_path)};"%>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
