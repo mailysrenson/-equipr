@@ -18,6 +18,12 @@ class BookingsController < ApplicationController
 
   def own_bookings
     @bookings = Booking.where(:user_id == current_user)
+    @equipment = Equipment.all
+    @bookings_my_equipment = @equipment.map do |equipment| 
+      if equipment.user_id == current_user
+        @bookings_my_equipment << equipment
+      end
+    end
   end
 
   private
