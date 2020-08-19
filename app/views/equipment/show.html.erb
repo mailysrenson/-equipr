@@ -15,7 +15,7 @@
                 <div class="carousel-item">
                   <%= cl_image_tag photo.key, class: "d-block w-100 rounded"%>
                 </div>
-              <% end %> 
+              <% end %>
             <% end %>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -35,11 +35,11 @@
 
         <!-- Link to book -->
         <div class="d-flex justify-content-center">
-          <%= link_to "Book equipment",  new_equipment_booking_path(@equipment), class:"btn btn-primary" %>
         </div>
       </div>
       <div class="col-4">
         <h2>Where the booking form will come</h2>
+        <%= render template: 'bookings/form'%>
       </div>
   </div>
 </div>
