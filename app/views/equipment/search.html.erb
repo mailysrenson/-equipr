@@ -1,13 +1,22 @@
 
-<ul>
-  <% @equipments.each do |equipment| %>
-    <!-- change this when you did couldinary in create -->
-    <li><%= equipment.name %></li>
-    <li><%= equipment.price %></li>
+<div class="row">
+  <div class="col-8">
+    <% @equipments.each do |equipment| %>
+    <%= link_to(equipment) do %>
+    <div class="media bg-white rounded m-2 py-3 card-shadow">
+      <!-- <#% equipment.photos.each do |photo| %> -->
+      <%= cl_image_tag equipment.photos.first.key, height: 300, width: 400, crop: :fill, class: "mr-3" %>
+      <div class="media-body">
+        <h2><%= equipment.name %></h2>
+          <p>Price:<%= equipment.price %>€</p>
+          <p>Rented by: <%= equipment.user.first_name %></p>
+      </div>
+    </div>
+      <!-- <#% end %> -->
     <% end %>
-  </ul>
-  <% @equipments.each do |equipment| %>
-  <% equipment.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="col-4">
+    <img id="map" class="w-100" src="https://raw.githubusercontent.com/lewagon/layouts-demo/gh-pages/images/mapbox.png">
+  </div>
+</div>

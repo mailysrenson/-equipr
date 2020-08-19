@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="my-3"> Book <%=@equipment.name%> </h1>
+  <div class="widget-content" data-unavailable="<%= @equipment.unavailable_dates.to_json %>">
+    <%= simple_form_for [@equipment, @booking] do |f| %>
+      <%= f.input :start_date, as: :string, label: "From", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
+      <%= f.input :end_date, as: :string, label: "To", placeholder: "To", wrapper_html: { class: "inline_field_wrapper" } %>
+      <%= f.submit "book", class: "btn btn-primary btn-lg btn-booking mb-3" %>
+    <% end %>
+  </div>
+
+  <%= link_to "Back to equipment", equipment_path(@equipment) %>
+</div>
+
