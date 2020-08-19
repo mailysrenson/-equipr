@@ -19,7 +19,18 @@ class BookingsController < ApplicationController
   end
 
   def own_bookings
-    @bookings = Booking.where(:user_id == current_user)
+    @bookings = current_user.bookings
+    @my_equipment = current_user.equipment
+    @bookings_my_equipment = @my_equipment.map do |equipment|
+      equipment.bookings   
+    end.flatten
+  end
+
+  def validate
+    @booking = Booking.find(params[:id])
+
+    @booking.update!(status: params[:commit])
+    redirect_to own_bookings_path
   end
 
   private

@@ -20,6 +20,7 @@ class EquipmentController < ApplicationController
     else
       flash[:alert] = "Oops! 😱 a problem has occurred while creating your equipment! Please try again."
       render :new
+
     end
   end
 
@@ -29,7 +30,7 @@ class EquipmentController < ApplicationController
   end
 
   def own_equipment
-    @equipment = Equipment.where(:user_id == current_user)
+    @equipment = current_user.equipment
   end
 
   def edit
