@@ -17,7 +17,6 @@ class EquipmentController < ApplicationController
     @equipment.user = current_user
     @equipment.save
 
-
     redirect_to equipment_path(@equipment)
   end
 
