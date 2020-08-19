@@ -25,7 +25,7 @@ class EquipmentController < ApplicationController
   end
 
   def own_equipment
-    @equipment = Equipment.where(:user_id == current_user)
+    @equipment = current_user.equipment
   end
 
   def edit

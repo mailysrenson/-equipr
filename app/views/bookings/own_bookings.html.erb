@@ -6,7 +6,7 @@
       <div class="col-3 offset-1 bg-white rounded my-2 py-3 card-shadow">
         <h4 class="my-2 text-center">Booking <%= index + 1%></h2>
         <hr>
-          <p class="text-center"> <%="#{Equipment.find(booking.equipment_id).name} "%></p>
+          <p class="text-center"> <%="#{booking.equipment.name} "%></p>
           <p class="text-center"><%= "from #{booking.start_date} to #{booking.end_date}" %></p>
           <p class="text-center"><%= "rented from #{Equipment.find(booking.equipment_id).user.first_name} "%></p>
           <p class="text-center"><%= "Status: #{booking.status} "%></p> 
@@ -16,5 +16,27 @@
 
   <h1 class="my-4 text-center">What other people book from me</h1>
 
-  
+  <div class="row">
+    <% @bookings_my_equipment.each_with_index do |booking, index| %>
+      <div class="col-3 offset-1 bg-white rounded my-2 py-3 card-shadow">
+        <h4 class="my-2 text-center">Booking <%= index + 1%></h2>
+        <hr>
+          <p class="text-center"> <%="#{booking.equipment.name} "%></p>
+          <p class="text-center"><%= "from #{booking.start_date} to #{booking.end_date}" %></p>
+          <p class="text-center"><%= "Status: #{booking.status} "%></p>
+          <div class="d-flex justify-content-around"">
+            <div>
+            <%= simple_form_for(booking, url: validate_booking_path(booking), html: {method: :patch}) do |f| %>
+              <%= f.button :submit, value: "approved", class: "btn btn-success"%>
+            <% end %>
+            </div>
+            <div>
+            <%= simple_form_for(booking, url: validate_booking_path(booking), html: {method: :patch}) do |f| %>
+              <%= f.button :submit, value: "rejected", class: "btn btn-danger"%>
+            <% end %>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
 </div>
