@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="my-4 text-center">My bookings</h1>
+
+  <div class="row">
+    <% @bookings.each_with_index do |booking, index| %>
+      <div class="col-3 bg-white offset-1 py-3 rounded">
+        <h4 class="my-2">Booking <%= index + 1%></h2>
+          <p> <%="#{Equipment.find(booking.equipment_id).name} "%></p>
+          <p><%= "from #{booking.start_date} to #{booking.end_date}" %></p>
+          <p><%= "rented from #{Equipment.find(booking.equipment_id).user.first_name} "%></p>
+          <p><%= "Status: #{booking.status} "%></p> 
+      </div> 
+    <% end %>
+  </div>
+</div>

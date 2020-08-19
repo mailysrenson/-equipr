@@ -16,6 +16,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+  def own_bookings
+    @bookings = Booking.where(:user_id == current_user)
+  end
+
   private
 
   def booking_params
