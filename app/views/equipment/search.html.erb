@@ -2,6 +2,7 @@
 <div class="row">
   <div class="col-8">
     <% @equipments.each do |equipment| %>
+    <%= link_to(equipment) do %>
     <div class="media bg-white rounded m-2 py-3 card-shadow">
       <!-- <#% equipment.photos.each do |photo| %> -->
       <%= cl_image_tag equipment.photos.first.key, height: 300, width: 400, crop: :fill, class: "mr-3" %>
@@ -12,6 +13,7 @@
       </div>
     </div>
       <!-- <#% end %> -->
+    <% end %>
     <% end %>
   </div>
   <div class="col-4">
