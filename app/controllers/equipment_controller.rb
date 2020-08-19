@@ -24,6 +24,10 @@ class EquipmentController < ApplicationController
     @equipment = Equipment.find(params[:id])
   end
 
+  def own_equipment
+    @equipment = Equipment.where(:user_id == current_user)
+  end
+
   def edit
   end
 

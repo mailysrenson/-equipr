@@ -1,0 +1,9 @@
+<div class="container">
+  <h1 class="my-3">My equipment</h1>
+
+  <ul>
+    <% @equipment.each do |equipment| %>
+      <li><p> <%= link_to "#{equipment.name} : #{equipment.price}€", equipment_path(equipment) %></p></li>
+    <% end %>
+  </ul>
+</div>
