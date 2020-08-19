@@ -16,23 +16,10 @@
   </head>
 
   <body>
-    <%  if notice %>
-      <p class="notice"><%= notice %> </p>
-    <% elsif alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <%= render 'shared/flashes' %>
 
-    <script>
-      $(document).ready(function(){
-        setTimeout(function(){
-          $('#notice-wrapper').fadeOut("slow", function(){
-            $(this).remove();
-          })
-        },4500);
-      });
-    </script>
+    <%= yield %>
   </body>
 </html>
