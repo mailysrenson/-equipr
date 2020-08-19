@@ -5,8 +5,10 @@ class BookingsController < ApplicationController
     @booking.equipment = @equipment
     @booking.user = current_user
     if @booking.save
-      redirect_to equipment_path(@equipment)
+      redirect_to equipment_path(@equipment), notice: "Booking confirmed, waiting for the owner to accept!"
+
     else
+      flash[:alert] = "Please select other dates that are available!"
       render :new
     end
   end

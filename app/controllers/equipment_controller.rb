@@ -15,16 +15,18 @@ class EquipmentController < ApplicationController
   def create
     @equipment = Equipment.new(equipment_params)
     @equipment.user = current_user
-    @equipment.save
     if @equipment.save
-      redirect_to equipment_path(@equipment)
+      redirect_to equipment_path(@equipment), notice: "Your equipment has been created!"
     else
-      render "equipment/new"
+      flash[:alert] = "Oops! 😱 a problem has occurred while creating your equipment! Please try again."
+      render :new
+
     end
   end
 
   def show
     @equipment = Equipment.find(params[:id])
+    @booking = Booking.new
   end
 
   def own_equipment
