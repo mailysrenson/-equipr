@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="my-4 text-center">My bookings</h1>
+  <h1 class="my-4 text-center">What I book from other people</h1>
 
   <div class="row">
     <% @bookings.each_with_index do |booking, index| %>
@@ -12,5 +12,24 @@
           <p class="text-center"><%= "Status: #{booking.status} "%></p> 
       </div> 
     <% end %>
+  </div>
+
+  <h1 class="my-4 text-center">What other people book from me</h1>
+
+  <div class="row">
+    <% if @bookings_my_equipment.empty?%>
+      <p>No bookings yet</p>
+    <%else %>
+      <% @bookings_my_equipment.each_with_index do |booking, index| %>
+        <div class="col-3 offset-1 bg-white rounded my-2 py-3 card-shadow">
+          <h4 class="my-2 text-center">Booking <%= index + 1%></h2>
+          <hr>
+            <p class="text-center"> <%="#{Equipment.find(booking.equipment_id).name} "%></p>
+            <p class="text-center"><%= "from #{booking.start_date} to #{booking.end_date}" %></p>
+            <p class="text-center"><%= "rented from #{Equipment.find(booking.equipment_id).user.first_name} "%></p>
+            <p class="text-center"><%= "Status: #{booking.status} "%></p> 
+        </div> 
+      <% end %>
+    <%end%>
   </div>
 </div>
