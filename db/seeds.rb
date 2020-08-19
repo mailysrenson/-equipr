@@ -12,8 +12,8 @@ User.destroy_all
 user = User.create!(
     email: "mailys_94@hotmail.com",
     password: 123456,
-    first_name: Mailys,
-    last_name: Renson,
+    first_name: "Mailys",
+    last_name: "Renson",
     phone_number: Faker::PhoneNumber.cell_phone,
     birthdate: Faker::Date.birthday,
     street: Faker::Address.street_address,
@@ -23,7 +23,7 @@ user = User.create!(
   )
 
 4.times do
-  user = User.create!(
+  p user = User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
     first_name: Faker::Name.first_name,
@@ -37,24 +37,29 @@ user = User.create!(
   )
 end
 
-
+require "open-uri"
 
 20.times do
-  equipment = Equipment.create!(
+  equipment = Equipment.new(
     name: ["basketball", "basketball jersey","knee pads", "soccer ball", "goalie gloves", "stop watch",
       "shin guards", "soccer jersey", "tennis racket", "tennis ball", "badminton racket"].sample,
     price: Faker::Commerce.price,
     description: Faker::Lorem.sentence,
     user_id: (User.all).sample.id
   )
+   file = URI.open("http://i.ebayimg.com/images/i/182187766628-0-1/s-l1000.jpg")
+  p file
+  equipment.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  p equipment.save!
 end
+
 
 3.times do
   booking = Booking.create!(
-    name: ["basketball", "basketball jersey","knee pads", "soccer ball", "goalie gloves", "stop watch",
-      "shin guards", "soccer jersey", "tennis racket", "tennis ball", "badminton racket"].sample,
-    period: Faker::Date.between,
-    rented_from: Faker::Name.name,
-    status:["pending", "declined", "accepted"].sample
+    start_date: Faker::Date.between(from: Date.today-1.year, to: Date.today-6.months),
+    end_date: Faker::Date.between(from: Date.today-6.months, to: Date.today),
+    status: Booking::STATUS.sample,
+    user: User.all.sample,
+    equipment: Equipment.all.sample
   )
 end
