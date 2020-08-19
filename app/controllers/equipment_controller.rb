@@ -16,8 +16,11 @@ class EquipmentController < ApplicationController
     @equipment = Equipment.new(equipment_params)
     @equipment.user = current_user
     @equipment.save
-
-    redirect_to equipment_path(@equipment)
+    if @equipment.save
+      redirect_to equipment_path(@equipment)
+    else
+      render "equipment/new"
+    end
   end
 
   def show
