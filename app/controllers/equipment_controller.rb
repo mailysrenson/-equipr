@@ -1,10 +1,9 @@
 class EquipmentController < ApplicationController
   def search
-    @input = params[:search]
-    if @input.blank?
-      @equipments = Equipment.all
+    if params[:search].present?
+      @equipments = Equipment.search_equipment(params[:search][:query])
     else
-      @equipments = Equipment.where("name like ?", "%#{@input}%")
+      @equipments = Equipment.all
     end
   end
 
