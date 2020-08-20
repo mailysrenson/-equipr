@@ -1,4 +1,6 @@
 class Equipment < ApplicationRecord
+
+  
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many_attached :photos
@@ -8,11 +10,22 @@ class Equipment < ApplicationRecord
   validates :price, numericality: true
   validates :name, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_equipment, 
+    against: [:description, :name],
+    associated_against: {
+      user: [:first_name]
+    },
+    using: {
+      tsearch: { prefix: true}
+    }
+
    def unavailable_dates
     bookings.pluck(:start_date, :end_date).map do |range|
       { from: range[0], to: range[1] }
     end
   end
+
 
   private
 
