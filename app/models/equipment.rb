@@ -22,7 +22,7 @@ class Equipment < ApplicationRecord
 
    def unavailable_dates
     bookings.pluck(:start_date, :end_date).map do |range|
-      { from: range[0], to: range[1] }
+      { from: range[0].strftime("%d-%m-%Y"), to: range[1].strftime("%d-%m-%Y") }
     end
   end
 
