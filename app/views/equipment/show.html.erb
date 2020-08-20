@@ -30,7 +30,7 @@
         </div>
 
         <p class="mt-3 text-center"><strong>Description:</strong> <%= @equipment.description %></p>
-        <p class="text-center"><strong>Price:</strong> <%= @equipment.price %>€</p>
+        <p class="text-center"><strong>Price:</strong> <%= humanized_money_with_symbol(@equipment.price) %>€</p>
         <p class="text-center"><strong>Rented by:</strong> <%= @equipment.user[:first_name] %></p>
         <p class="text-center"><strong>Address:</strong> <%= "#{@equipment.user[:street]}, #{@equipment.user[:city]}" %></p>
 

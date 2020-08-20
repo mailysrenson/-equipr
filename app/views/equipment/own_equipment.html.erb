@@ -13,7 +13,7 @@
         </div>
         <div class="col-8">
           <h3 class="d-block"><%= link_to "#{equipment.name}", equipment_path(equipment) %></h3>
-          <p class="d-block"><%= "Price: #{equipment.price}€"%></p>
+          <p class="d-block"><%= "Price: #{humanized_money_with_symbol(equipment.price)}€"%></p>
           <p class="d-block">Bookings: <%= equipment.bookings.length%></p>
         </div>
       </div>

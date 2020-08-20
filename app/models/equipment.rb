@@ -1,6 +1,5 @@
 class Equipment < ApplicationRecord
 
-  
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many_attached :photos
@@ -12,9 +11,10 @@ class Equipment < ApplicationRecord
   validates :name, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  monetize :price_cents
 
   include PgSearch::Model
-  pg_search_scope :search_equipment, 
+  pg_search_scope :search_equipment,
     against: [:description, :name],
     associated_against: {
       user: [:first_name]

@@ -8,6 +8,7 @@ class Booking < ApplicationRecord
   validates :status, inclusion: {in: Booking::STATUS}
   validates :start_date, :end_date, presence: true, availability: true
   validate :end_date_after_start_date
+    monetize :amount_cents
 
    def booked_date_range
     { from: :start_date, to: :end_date }

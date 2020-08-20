@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_093003) do
+ActiveRecord::Schema.define(version: 2020_08_20_152523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,16 @@ ActiveRecord::Schema.define(version: 2020_08_20_093003) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "state"
+    t.string "equipment_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
     t.index ["equipment_id"], name: "index_bookings_on_equipment_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "equipment", force: :cascade do |t|
     t.text "description"
-    t.float "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -58,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_093003) do
     t.text "address"
     t.float "latitude"
     t.float "longitude"
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_equipment_on_user_id"
   end
 
