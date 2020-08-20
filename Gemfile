@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.7'
 # Devise for the creation of user.
 gem 'devise'
 
+# search bar gem
+gem 'pg_search', '~>2.3.0'
+
 gem 'country_select'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -29,6 +32,9 @@ gem 'country_select'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'faker'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cloudinary', '~> 1.12.0'

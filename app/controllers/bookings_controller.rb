@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
     @my_equipment = current_user.equipment
     @bookings_my_equipment = @my_equipment.map do |equipment|
-      equipment.bookings   
+      equipment.bookings
     end.flatten
   end
 
@@ -39,3 +39,4 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :end_date, :status)
   end
 end
+

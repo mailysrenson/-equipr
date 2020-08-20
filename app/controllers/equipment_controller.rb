@@ -1,26 +1,25 @@
 class EquipmentController < ApplicationController
   def search
-    @input = params[:search]
-    if @input.blank?
-        @equipments = Equipment.all
-        @equipment = Equipment.geocoded
+    if params[:search].present?
+         @equipments = Equipment.search_equipment(params[:search][:query])
+         @equipment = Equipment.geocoded
 
         @markers = @equipment.map do |equipment|
       {
         lat: equipment.latitude,
         lng: equipment.longitude
       }
-      end
+      end 
     else
-      @equipments = Equipment.where("name like ?", "%#{@input}%")
-        @equipment = Equipment.geocoded
+      @equipments = Equipment.all
+      @equipment = Equipment.geocoded
 
-    @markers = @equipment.map do |equipment|
+      @markers = @equipment.map do |equipment|
       {
         lat: equipment.latitude,
         lng: equipment.longitude
       }
-      end
+      end 
     end
   end
 

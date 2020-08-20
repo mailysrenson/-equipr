@@ -8,6 +8,7 @@
       <%= cl_image_tag equipment.photos.first.key, height: 300, width: 400, crop: :fill, class: "mr-3" %>
       <div class="media-body">
         <h2><%= equipment.name %></h2>
+          <p>Description:<%= equipment.description %>€</p>
           <p>Price:<%= equipment.price %>€</p>
           <p>Rented by: <%= equipment.user.first_name %></p>
           <p>City: <%= equipment.user.city %></p>
