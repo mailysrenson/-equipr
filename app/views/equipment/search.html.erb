@@ -8,6 +8,7 @@
       <%= cl_image_tag equipment.photos.first.key, height: 300, width: 400, crop: :fill, class: "mr-3" %>
       <div class="media-body">
         <h2><%= equipment.name %></h2>
+          <p>Description:<%= equipment.description %>€</p>
           <p>Price:<%= equipment.price %>€</p>
           <p>Rented by: <%= equipment.user.first_name %></p>
           <p>City: <%= equipment.user.city %></p>
@@ -18,6 +19,10 @@
     <% end %>
   </div>
   <div class="col-4">
-    <img id="map" class="w-100" src="https://raw.githubusercontent.com/lewagon/layouts-demo/gh-pages/images/mapbox.png">
+    <div id="map"
+     style="width: 100%; height: 100vh;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+     </div>
   </div>
 </div>

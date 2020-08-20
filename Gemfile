@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.7'
 # Devise for the creation of user.
 gem 'devise'
 
+# search bar gem
+gem 'pg_search', '~>2.3.0'
+
 gem 'country_select'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -39,6 +42,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'
