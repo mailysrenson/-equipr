@@ -24,13 +24,16 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import 'mapbox-gl/dist/mapbox-gl.css';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { toggleDateInputs } from '../components/booking';
+import { initMapbox } from '../plugins/init_mapbox';
 
 
 document.addEventListener('turbolinks:load', () => {
   toggleDateInputs()
+  initMapbox();
   // Call your functions here, e.g:
   // initSelect2();
 });

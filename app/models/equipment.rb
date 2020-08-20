@@ -5,10 +5,13 @@ class Equipment < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many_attached :photos
   validate :check_minimal_one_picture
+  validates :address, presence: true
   validates :description, presence: true
   validates :price, presence: true
   validates :price, numericality: true
   validates :name, presence: true
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model
   pg_search_scope :search_equipment, 
