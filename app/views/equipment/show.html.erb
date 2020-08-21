@@ -5,17 +5,17 @@
         <% if @equipment.reviews.length > 0 %>
           <% @sum = 0 %>
           <% @equipment.reviews.each do |r| %>
-          <% @sum += r.rating.to_f %>
+            <% @sum += r.rating.to_f %>
           <% end %>
-        <% end %>
         <div  class="flex">
           <div class="flexbox">
-          <h5 id="star" class="d-block"><%= "★" *(@sum /@number_of_ratings).round %></h5>
+          <h5 id="star" class="d-block"><%= "★" *(@sum /@equipment.reviews.length).round %></h5>
           </div>
           <div class="flexbox">
-          <h5 class="d-block"><%= link_to "#{@number_of_ratings} reviews", equipment_reviews_path(@equipment)%></h5>
+          <h5 class="d-block"><%= link_to "#{@equipment.reviews.length} reviews", equipment_reviews_path(@equipment)%></h5>
           </div>
         </div>
+        <% end %>
         <!-- Carousel -->
         <div class="col-6 offset-3 d-flex justify-content-center">
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

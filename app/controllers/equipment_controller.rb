@@ -41,7 +41,7 @@ class EquipmentController < ApplicationController
     @equipment.reviews.each do |r|
       @sum_of_ratings += r.rating.to_i
     end
-    @average_rating = @sum_of_ratings / @number_of_ratings
+    
   end
 
 
