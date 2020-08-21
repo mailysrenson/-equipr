@@ -1,26 +1,19 @@
 class EquipmentController < ApplicationController
   def search
     if params[:search].present?
-         @equipments = Equipment.search_equipment(params[:search][:query])
-         @equipment = Equipment.geocoded
-
-        @markers = @equipment.map do |equipment|
-      {
-        lat: equipment.latitude,
-        lng: equipment.longitude
-      }
-      end 
+      @equipments = Equipment.search_equipment(params[:search][:query])
     else
       @equipments = Equipment.all
-      @equipment = Equipment.geocoded
+    end
+      @equipments = @equipments.geocoded
 
-      @markers = @equipment.map do |equipment|
+      @markers = @equipments.map do |equipment|
       {
         lat: equipment.latitude,
-        lng: equipment.longitude
-      }
-      end 
-    end
+        lng: equipment.longitude,
+        infoWindow: render_to_string(partial: "equipment/info_window", locals: { equipment: equipment })
+        }
+      end
   end
 
   def new
