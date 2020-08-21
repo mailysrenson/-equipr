@@ -2,9 +2,11 @@
   <div class="row  py-4 my-3">
     <div class="col-8 bg-white my-3 p-3">
         <h2 class="my-3 text-center"><%= @equipment.name%></h2>
-        <% @sum = 0 %>
-        <% @equipment.reviews.each do |r| %>
-        <% @sum += r.rating.to_f %>
+        <% if @equipment.reviews.length > 0 %>
+          <% @sum = 0 %>
+          <% @equipment.reviews.each do |r| %>
+          <% @sum += r.rating.to_f %>
+          <% end %>
         <% end %>
         <div  class="flex">
           <div class="flexbox">
