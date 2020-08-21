@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="review-block">
+    <h1>All Reviews for <%= @equipment.name %></h1>
+
+    <div class="reviews">
+    <% @equipment.reviews.each do |r| %>
+        <div class="review-category">
+          <h4><span class="heading">Rating: </span><span id="star"><%= "★" * r.rating.to_i%></span></h4>
+          <p><%= r.content %><p>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+</div>

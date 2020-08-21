@@ -3,6 +3,7 @@ class Equipment < ApplicationRecord
 
   belongs_to :user
   has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many_attached :photos
   has_many :favorite_equipment # just the 'relationships'
   has_many :favorited_by, through: :favorite_equipment, source: :user

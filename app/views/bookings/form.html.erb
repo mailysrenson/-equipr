@@ -2,7 +2,7 @@
     <%= simple_form_for [@equipment, @booking] do |f| %>
       <%= f.input :start_date, as: :string, label: "From", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
       <%= f.input :end_date, as: :string, label: "To", placeholder: "To", wrapper_html: { class: "inline_field_wrapper" } %>
-      <%= f.submit "book", class: "btn btn-primary btn-lg btn-booking mb-3" %>
+      <%= f.submit "book", class: "btn btn-primary my-3" %>
     <% end %>
   </div>
 

@@ -1,7 +1,19 @@
-<div class="container bg-white">
+<div class="container">
   <div class="row  py-4 my-3">
-    <div class="col-8">
-        <h2 class="my-3 text-center"><%= @equipment.name %></h2>
+    <div class="col-8 bg-white my-3 p-3">
+        <h2 class="my-3 text-center"><%= @equipment.name%></h2>
+        <% @sum = 0 %>
+        <% @equipment.reviews.each do |r| %>
+        <% @sum += r.rating.to_f %>
+        <% end %>
+        <div  class="flex">
+          <div class="flexbox">
+          <h5 id="star" class="d-block"><%= "★" *(@sum /@number_of_ratings).round %></h5>
+          </div>
+          <div class="flexbox">
+          <h5 class="d-block"><%= link_to "#{@number_of_ratings} reviews", equipment_reviews_path(@equipment)%></h5>
+          </div>
+        </div>
         <!-- Carousel -->
         <div class="col-6 offset-3 d-flex justify-content-center">
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -36,11 +48,32 @@
 
         <!-- Link to book -->
         <div class="d-flex justify-content-center">
+
         </div>
       </div>
       <div class="col-4">
-        <h4>Select the dates for which you would like to book <%= @equipment.name %>:</h4>
-        <hr>
-        <%= render template: 'bookings/form'%>
+        <div class="booking bg-white my-3 p-3">
+          <div class="price-box">
+            <%= @equipment.price %><span> € per day</span></%>
+          </div>
+            <div class="dates">
+              <%= render template: "bookings/form" %>
+            </div>
+        </div>
+
+          <div class="review-box bg-white my-3 p-3 ">
+          <h3>Leave a review</h3>
+          <%= simple_form_for ([@equipment, @review]) do | f| %>
+            <%= f.input :content, as: :text %>
+            <%= f.input :rating, as: :range, input_html: {list:  "tickmarks", min: "0" , max: "5"}%>
+              <datalist id="tickmarks">
+                <% (0..5).to_a.each do |thing| %>
+                  <option value="<%= thing %>"><%= thing %></option>
+                <% end %>
+              </datalist>
+            <%= f.button :submit, class: "btn btn-primary my-3"%>
+            <% end %>
+          </div>
+    </div>
   </div>
 </div>

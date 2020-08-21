@@ -61,7 +61,15 @@ ActiveRecord::Schema.define(version: 2020_08_21_104547) do
     t.index ["user_id"], name: "index_equipment_on_user_id"
   end
 
-  create_table "favorite_equipments", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "equipment_id", null: false
+    t.integer "rating"
+    t.index ["equipment_id"], name: "index_reviews_on_equipment_id"
+  end
+   create_table "favorite_equipments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "equipment_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -115,6 +123,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_104547) do
   add_foreign_key "bookings", "equipment"
   add_foreign_key "bookings", "users"
   add_foreign_key "equipment", "users"
+  add_foreign_key "reviews", "equipment"
   add_foreign_key "favorite_equipments", "equipment"
   add_foreign_key "favorite_equipments", "users"
   add_foreign_key "favorites", "equipment"

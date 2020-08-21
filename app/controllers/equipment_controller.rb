@@ -35,7 +35,15 @@ class EquipmentController < ApplicationController
   def show
     @equipment = Equipment.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
+    @number_of_ratings = @equipment.reviews.length
+    @sum_of_ratings = 0
+    @equipment.reviews.each do |r|
+      @sum_of_ratings += r.rating.to_i
+    end
+    @average_rating = @sum_of_ratings / @number_of_ratings
   end
+
 
   def own_equipment
     @equipment = current_user.equipment
@@ -54,6 +62,7 @@ class EquipmentController < ApplicationController
   private
 
   def equipment_params
-    params.require(:equipment).permit(:name, :description, :price, :address, photos: [])
+    params.require(:equipment).permit(:name, :description, :price, :address, photos: [],
+      reviews: [:content, :rating])
   end
 end

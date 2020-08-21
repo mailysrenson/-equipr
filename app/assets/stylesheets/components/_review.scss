@@ -1,0 +1,48 @@
+.review-block {
+
+  & h2 {
+    color: white;
+  }
+
+  & p {
+    color: white;
+  }
+}
+
+
+.reviews {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  padding: 0px;
+
+}
+
+.review-category {
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-left: 10px;
+  background-size: cover;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 14px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  background: white;
+  border-color: #3f72af;
+  & p {
+    color: #3f72af;
+  }
+}
+
+#star {
+  color: #ff5252;
+}
+
+heading {
+  font-size: 25px;
+  margin-right: 25px;
+}
