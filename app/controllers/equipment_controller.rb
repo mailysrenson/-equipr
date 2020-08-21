@@ -9,7 +9,7 @@ class EquipmentController < ApplicationController
         lat: equipment.latitude,
         lng: equipment.longitude
       }
-      end 
+      end
     else
       @equipments = Equipment.all
       @equipment = Equipment.geocoded
@@ -19,7 +19,7 @@ class EquipmentController < ApplicationController
         lat: equipment.latitude,
         lng: equipment.longitude
       }
-      end 
+      end
     end
   end
 
@@ -56,6 +56,7 @@ class EquipmentController < ApplicationController
 
   def destroy
   end
+
 
   private
 

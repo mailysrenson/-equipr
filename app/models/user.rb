@@ -7,5 +7,9 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # Favorite equipment of user
+  has_many :favorite_equipment # just the 'relationships'
+  has_many :favorites, through: :favorite_equipment, source: :equipment
 end
 
