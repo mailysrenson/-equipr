@@ -45,7 +45,8 @@ require "open-uri"
       "shin guards", "soccer jersey", "tennis racket", "tennis ball", "badminton racket"].sample,
     price: Faker::Commerce.price,
     description: Faker::Lorem.sentence,
-    user_id: (User.all).sample.id
+    user_id: (User.all).sample.id,
+    address: "212 Oude baan, Paal"
   )
    file = URI.open("http://i.ebayimg.com/images/i/182187766628-0-1/s-l1000.jpg")
   p file
