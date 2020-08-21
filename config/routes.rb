@@ -14,4 +14,5 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  post "equipment/:id/favorite", to:"favorite_equipments#create", as: :favorite_equipment
 end

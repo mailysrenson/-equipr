@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_093003) do
+ActiveRecord::Schema.define(version: 2020_08_21_104547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2020_08_20_093003) do
     t.index ["user_id"], name: "index_equipment_on_user_id"
   end
 
+  create_table "favorite_equipments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "equipment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["equipment_id"], name: "index_favorite_equipments_on_equipment_id"
+    t.index ["user_id"], name: "index_favorite_equipments_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -97,4 +106,6 @@ ActiveRecord::Schema.define(version: 2020_08_20_093003) do
   add_foreign_key "bookings", "equipment"
   add_foreign_key "bookings", "users"
   add_foreign_key "equipment", "users"
+  add_foreign_key "favorite_equipments", "equipment"
+  add_foreign_key "favorite_equipments", "users"
 end

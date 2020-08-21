@@ -13,6 +13,9 @@
           <p>Rented by: <%= equipment.user.first_name %></p>
           <p>City: <%= equipment.user.city %></p>
       </div>
+      <% if current_user %>
+  <%= link_to "favorite",   favorite_equipment_path(equipment), method: :post %>
+<% end %>
     </div>
       <!-- <#% end %> -->
     <% end %>

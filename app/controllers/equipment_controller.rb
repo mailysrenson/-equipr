@@ -1,7 +1,7 @@
 class EquipmentController < ApplicationController
   def search
     if params[:search].present?
-      @equipments = Equipment.search_equipment(params[:search][:query])
+         @equipments = Equipment.search_equipment(params[:search][:query])
     else
       @equipments = Equipment.all
     end
@@ -49,6 +49,7 @@ class EquipmentController < ApplicationController
 
   def destroy
   end
+
 
   private
 
