@@ -15,4 +15,5 @@ Rails.application.routes.draw do
       end
       resources :reviews, only: [:create, :destroy, :index]
   end
+  post "equipment/:id/favorite", to:"favorite_equipments#create", as: :favorite_equipment
 end

@@ -5,6 +5,8 @@ class Equipment < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many_attached :photos
+  has_many :favorite_equipment # just the 'relationships'
+  has_many :favorited_by, through: :favorite_equipment, source: :user
   validate :check_minimal_one_picture
   validates :address, presence: true
   validates :description, presence: true
@@ -29,6 +31,7 @@ class Equipment < ApplicationRecord
       { from: range[0].strftime("%d-%m-%Y"), to: range[1].strftime("%d-%m-%Y") }
     end
   end
+
 
 
   private
