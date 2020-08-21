@@ -1,8 +1,9 @@
 class Equipment < ApplicationRecord
 
-  
+
   belongs_to :user
   has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many_attached :photos
   validate :check_minimal_one_picture
   validates :address, presence: true
@@ -14,7 +15,7 @@ class Equipment < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model
-  pg_search_scope :search_equipment, 
+  pg_search_scope :search_equipment,
     against: [:description, :name],
     associated_against: {
       user: [:first_name]

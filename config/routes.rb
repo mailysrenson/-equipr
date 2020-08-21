@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   patch 'booking/:id/validate', to: "bookings#validate", as: :validate_booking
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :equipment, only: [:create, :new, :edit, :show, :update, :destroy] do
-    resources :bookings, except: [:destroy]
-    collection do
-      get :search
-    end
+    resources :equipment, only: [:create, :new, :edit, :show, :update, :destroy] do
+      resources :bookings, except: [:destroy]
+      collection do
+        get :search
+      end
+      resources :reviews, only: [:create, :destroy, :index]
   end
 end
